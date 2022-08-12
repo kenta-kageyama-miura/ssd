@@ -1,9 +1,26 @@
 
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
 
-  table th{
-    padding : 20px 10px;
-  }
-  
-  table td{
-    padding : 20px 10px;
-  }
+table th,table td{
+  text-align: center;
+  width: 10%;
+  padding: 15px 0;
+}
+
+th {
+  color: #ffffff;/* 見出しの文字色 */
+  background-color: #0d90f3; /* 見出しの背景色 */
+}
+
+table tr{
+  border-bottom: solid 2px #eee;
+}
+
+td[id ^= "duplication_"]{
+  color: #ffffff;
+  border-top: solid 2px #ffffff;
+}

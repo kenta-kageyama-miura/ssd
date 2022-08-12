@@ -43,7 +43,6 @@ var sessionInfo3 =
         },
         {
             "clientComputerName": "SuzukiNotePC2",
-            "serverUserName": "DevelopUser3",
             "idleTime": 42,
             "loginTime": "2022-01-02T13:09:12.015+10:20"
         },
@@ -91,7 +90,7 @@ var sessionInfoList =
     データの整形
  **************************/
 // 接続先のコンピュータ名でソート
-sessionInfoList.sort(function(a,b){
+sessionInfoList.sort(function(a,b) {
     if(a.serverComputerName < b.serverComputerName) return -1;
     if(a.serverComputerName > b.serverComputerName) return 1;
     return 0;
@@ -115,7 +114,7 @@ var tableBody = document.createElement("tbody");
 // ヘッダー
 const row_Header = document.createElement('tr');
 var headerWordList = ["Server", "User", "Login Computer", "Server User", "Last Login Time", "Idle During"]
-for (let i = 0; i < headerWordList.length; i++) {
+for(let i = 0; i < headerWordList.length; i++) {
     const th = document.createElement('th');
     th.textContent = headerWordList[i];
     row_Header.appendChild(th);
@@ -132,6 +131,9 @@ sessionInfoList.forEach((sessionInfo) => {
 
         const data_1 = document.createElement('td');
         data_1.textContent = convertPrintString(sessionInfo.serverComputerName, "String");
+        if(sessionCount >= 2) {
+            data_1.setAttribute("id", "duplication_" + sessionInfo.serverComputerName + "_" + sessionCount);
+        }
 
         const data_2 = document.createElement('td');
         data_2.textContent = convertPrintString(session.clientUserName, "String");
@@ -158,7 +160,7 @@ sessionInfoList.forEach((sessionInfo) => {
         row_Data.style.fontWeight = "bold";
         tableBody.appendChild(row_Data);
     });
-    if (sessionCount == 0) {
+    if(sessionCount == 0) {
         var row_Data = document.createElement('tr');
         const data_1 = document.createElement('td');
         data_1.textContent = sessionInfo.serverComputerName;
